@@ -1,0 +1,81 @@
+/* Global styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Background color for the whole page */
+        }
+
+        /* Cart container styles */
+        .cart-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cart table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: none; /* Remove borders between cells */
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td img {
+            max-width: 80px; /* Adjust image size */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center align images */
+        }
+
+        .remove-btn {
+            padding: 5px 10px;
+            background-color: #ff6347; /* Red color for remove button */
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .remove-btn:hover {
+            background-color: #d52a00; /* Darker shade of red on hover */
+            color: white;
+        }
+
+        .total {
+            font-weight: bold;
+            text-align: right;
+            font-size: 1.2em;
+        }
+
+        .checkout-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            width: fit-content; /* Fit content width */
+            margin: 0 auto; /* Center align button */
+            margin-top: 20px; /* Add margin to top */
+        }
+
+        .checkout-btn:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }

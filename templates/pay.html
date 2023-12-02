@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make A Payment</title>
+</head>
+<body>
+    <h1>Make A Payment</h1>
+    <form method="POST" action="{% url 'stk' %}">
+        {% csrf_token %}
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="phone" placeholder="Enter phone number" required>
+        <br><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="paymentAmount" placeholder="Enter amount" required>
+        <br><br>
+
+        <button type="submit">Pay</button>
+    </form>
+
+
+    <script>
+        // Get the total amount value from Django (assuming it's passed to the template)
+        const totalAmount = {{ total }}; // Replace {{ total }} with your actual total value
+
+        // Fill the payment amount field with the total amount on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentAmountField = document.getElementById('paymentAmount');
+            paymentAmountField.value = totalAmount; // Set the default value for the payment amount field
+        });
+    </script>
+</body>
+</html>
+{#totalAmount#}

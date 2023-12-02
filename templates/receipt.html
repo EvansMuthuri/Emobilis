@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <!-- Add any necessary CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .receipt-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #28a745;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .details {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <h1>Receipt</h1>
+        <p>Transaction ID: <span class="details">{{ transaction.transaction_id }}</span></p>
+        <p>Date: <span class="details">{{ transaction.date }}</span></p>
+        <p>Amount: <span class="details">${{ transaction.amount }}</span></p>
+        <!-- Add other transaction details here -->
+        <p>Thank you for your payment!</p>
+    </div>
+</body>
+</html>

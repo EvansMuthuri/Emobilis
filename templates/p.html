@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trendzy - Styled Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="styles.css">
+    {% load static %}
+</head>
+<body>
+
+<section class="styled-products">
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Product Cards (Repeat for each product) -->
+            <div class="product-card">
+                <a href="{% url 'filtered_product_list' %}">
+                    <img src="{% static 'assets/img/hero.jpg' %} '' %}" alt="Product Image" class="product-image" />
+                    <h3 class="product-title">Product 1</h3>
+                    <p class="product-description">Description for Product 1</p>
+                </a>
+            </div>
+            <!-- Repeat product cards for multiple products -->
+        </div>
+    </div>
+    <div class="see-more">
+        <a href="{% url 'filtered_product_list' %}" class="see-more-btn">See More</a>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make A Payment</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Additional content section */
+        .additional-content {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .additional-content h2 {
+            color: #333;
+        }
+
+        .additional-content p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Make A Payment</h1>
+    <form method="POST" action="{% url 'stk' %}">
+        {% csrf_token %}
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="phone" placeholder="Enter phone number" required>
+        <br><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="paymentAmount" placeholder="Enter amount" required>
+        <br><br>
+
+        <button type="submit">Pay</button>
+    </form>
+
+    <!-- Additional content section -->
+    <div class="additional-content">
+        <h2>Secure Payment Process</h2>
+        <p>Our payment system ensures your transactions are safe and secure. We use advanced encryption methods to protect your data.</p>
+        <!-- Add more content here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the total amount value passed from Django
+            const totalAmount = {{ total }}; // Access the Django context variable
+
+            // Fill the payment amount field with the retrieved total amount
+            document.getElementById('paymentAmount').value = totalAmount;
+        });
+    </script>
+</body>
+</html>

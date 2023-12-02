@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>User Dashboard</h1>
+
+    <!-- Display content based on user type -->
+    <p>{{ content }}</p>
+
+    <!-- Additional content for specific user roles -->
+    {% if user_type == 'admin' %}
+        <p>Additional content for admin</p>
+    {% elif user_type == 'staff' %}
+        <p>Additional content for staff</p>
+    {% endif %}
+
+    <!-- Common content for all users -->
+    <p>Common content for all users...</p>
+</body>
+</html>

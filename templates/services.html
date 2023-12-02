@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dreams Design Depots Services</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/services.css' %}"> <!-- Link your CSS file -->
+    <style>
+        /* Additional styles for this section */
+        .services-section {
+            padding: 50px 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .services-header h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .services-cards {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<section class="services-section">
+    <div class="container">
+        <div class="services-header">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-cards">
+            <div class="service-card">
+                <h3>Web Design</h3>
+                <p>We create stunning and responsive websites tailored to your needs.</p>
+            </div>
+            <div class="service-card">
+                <h3>Graphic Design</h3>
+                <p>Our graphic design services include logo design, branding, and more.</p>
+            </div>
+            <div class="service-card">
+                <h3>UI/UX Design</h3>
+                <p>We focus on delivering intuitive and user-friendly interfaces.</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Marketing</h3>
+                <p>We offer digital marketing strategies to boost your online presence.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

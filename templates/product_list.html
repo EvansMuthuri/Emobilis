@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content goes here -->
+    <title>Product List</title>
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            height: 300px; /* Set height for consistent grid cells */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%; /* Adjust image height within the cell */
+            object-fit: cover;
+        }
+
+        .product-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box; /* Include padding in width */
+            transition: opacity 0.3s;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .product-card:hover .product-info {
+            opacity: 1; /* Show on hover */
+        }
+
+        .product-info p {
+            margin: 5px 0;
+        }
+
+        .view-details {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .view-details:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product List</h1>
+
+    <!-- Product grid -->
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }} Image">
+                <div class="product-info">
+                    <p>Price: Ksh.{{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="view-details">View Details</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
