@@ -1,6 +1,7 @@
 import json
 import base64
 
+from django.contrib.auth.models import User
 from django.contrib.sites import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Cart
@@ -119,15 +120,6 @@ def checkout_view(request):
     return render(request, 'checkout.html', context)
 
 
-# def process_payment(request):
-#     # Process payment logic here
-#     # Access payment details from the submitted form (e.g., card number)
-#     # Perform payment processing using a payment gateway or service
-#
-#     # After successful payment processing, update order status, create an order, etc.
-#     # Redirect to a success or confirmation page
-#     return redirect('payment_success')
-
 # @login_required
 def process_payment(request):
     if request.method == 'POST':
@@ -241,7 +233,7 @@ def product_detail(request, product_id):
     return render(request, 'product_detail.html', {'product': product, 'from_filtered_list': from_filtered_list})
 
 
-@user_passes_test(lambda user: user.is_staff or user.is_superuser)
+# @user_passes_test(lambda user: user.is_staff or user.is_superuser)
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -254,7 +246,7 @@ def edit_product(request, product_id):
     return render(request, 'edit_product.html', {'form': form})
 
 
-@user_passes_test(lambda user: user.is_staff or user.is_superuser)
+# @user_passes_test(lambda user: user.is_staff or user.is_superuser)
 def update_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -513,32 +505,7 @@ def neew(request):
     return render(request, 'neew.html')
 
 
-def registration(request):
-    if request.method == 'POST':
-        member = Member(firstname=request.POST['firstname'], lastname=request.POST['lastname'],
-                        email=request.POST['email'],
-                        username=request.POST['username'], password=request.POST['password'])
-        member.save()
-        return redirect('/')
-    else:
-        return render(request, 'registration.html')
 
-
-# def login(request):
-#     return render(request, 'login.html')
-
-
-# def index(request):
-# if request.method == 'POST':
-#     if Member.objects.filter(username=request.POST['username'],
-#                              password=request.POST['password']).exists():
-#         member = Member.objects.get(username=request.POST['username'],
-#                                     password=request.POST['password'])
-#         return render(request, 'index.html', {'member': member})
-#     else:
-#         return render(request, 'login.html')
-# else:
-#     return render(request, 'index.html')
 
 
 #
@@ -571,51 +538,6 @@ def logout_view(request):
     return redirect('index')  # Redirect to the index page after logout
 
 
-# def login(request):
-#     # Your login logic here, such as checking credentials
-#     # For demonstration purposes, assuming a successful login with user type determination
-#
-#     # Simulate login success and determine user type (replace this with actual login logic)
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#
-#         # Your authentication logic here (example: check credentials against database)
-#         user = authenticate(username=username, password=password)
-#
-#         if user is not None:
-#             # If authentication successful, determine user type and set in session
-#             # user_type = determine_user_type(user) # Replace with your logic to determine user type
-#             if user.is_superuser:
-#                 return 'admin'
-#             elif user.is_staff:
-#                 return 'staff'
-#             else:
-#                 return 'normal_user'
-#
-#
-#             request.session['user_type'] = user_type
-#             return redirect('dashboard')
-#         else:
-#             # If authentication failed, show an error message or handle accordingly
-#             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-
-        # if authenticated:
-        #     user_type = get_user_type(username)  # Replace with your logic
-        #     request.session['user_type'] = user_type
-        #     return redirect('dashboard')
-
-        # For demo purposes, assuming the login is successful
-    #     if username == 'admin':
-    #         request.session['user_type'] = 'admin'
-    #     elif username == 'staff':
-    #         request.session['user_type'] = 'staff'
-    #     else:
-    #         request.session['user_type'] = 'normal_user'
-    #     return redirect('dashboard')
-    #
-    # return render(request, 'login.html')
-
 
 def dashboard(request):
     user_type = request.session.get('user_type')
@@ -636,22 +558,6 @@ def determine_user_type(user):
         return profile.user_type
     except UserProfile.DoesNotExist:
         return 'normal_user'  # If profile doesn't exist, consider as a normal user
-
-# def login(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#
-#         user = authenticate(username=username, password=password)
-#
-#         if user is not None:
-#             user_type = determine_user_type(user)
-#             request.session['user_type'] = user_type
-#             return redirect('dashboard')
-#         else:
-#             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-#
-#     return render(request, 'login.html')
 
 
 
@@ -681,3 +587,23 @@ def user_login(request):
             return render(request, 'login.html', {'error_message': error_message})
 
     return render(request, 'login.html')
+
+
+
+
+def registration(request):
+    if request.method == 'POST':
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password']
+        # Create a new user
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return redirect('user_login')
+    return render(request, 'registration.html')
+
+
