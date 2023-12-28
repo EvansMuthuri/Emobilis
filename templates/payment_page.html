@@ -80,11 +80,11 @@
         {% csrf_token %}
 
         <label for="phone">Phone Number:</label>
-        <input type="text" name="phone" placeholder="Enter phone number" required>
+        <input type="text" name="phone" value="254" placeholder="Enter Phone Number" required="required">
         <br><br>
 
         <label for="amount">Amount:</label>
-        <input type="number" name="amount" id="paymentAmount" placeholder="Enter amount" required>
+        <input type="number" name="amount" id="paymentAmount" placeholder="Enter amount" required="required">
         <br><br>
 
         <button type="submit">Pay</button>

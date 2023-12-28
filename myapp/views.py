@@ -153,8 +153,8 @@ def pay(request):
 
 
 def token(request):
-    consumer_key = '1SGNa4Lfy4YqQiL832A2OEGNYNBuNPQf'
-    consumer_secret = 'R4BELOwVCGe2W2O1'
+    consumer_key = 'BIX4dZJOs0yAJd9BuzrqUXfGa0V9f48i'
+    consumer_secret = 'MAWtAgbCAJNa9ABo'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
     r = requests.get(api_URL, auth=HTTPBasicAuth(
